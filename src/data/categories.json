@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Health & Fitness",
+    "slug": "health-fitness",
+    "description": "Weight loss, supplements, workouts, biohacking — the largest vertical on ClickBank."
+  },
+  {
+    "name": "E-Business & E-Marketing",
+    "slug": "ebusiness-emarketing",
+    "description": "Make money online, affiliate marketing, SEO, digital products — evergreen demand."
+  },
+  {
+    "name": "Self-Help",
+    "slug": "self-help",
+    "description": "Productivity, habits, mindset, confidence — high-conversion personal growth offers."
+  },
+  {
+    "name": "Spirituality, New Age & Alternative Beliefs",
+    "slug": "spirituality",
+    "description": "Manifestation, law of attraction, numerology, energy work — top-grossing vertical."
+  },
+  {
+    "name": "Relationships",
+    "slug": "relationships",
+    "description": "Get your ex back, dating advice, marriage repair — consistent top sellers."
+  }
+]

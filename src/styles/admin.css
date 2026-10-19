@@ -1,0 +1,207 @@
+/* ============================================================
+   Admin — pele do scaffold moderno (Café-da-Tarde · Karla)
+   O chrome do painel usa os tokens do scaffold (:root abaixo).
+   O preview de product-card mantém a cor do SITE PÚBLICO (WYSIWYG).
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* Switzer + Cabinet Grotesk — pro WYSIWYG do editor/preview (espelha o público) */
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&f[]=cabinet-grotesk@500,700,800,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --c-bg:          250 248 244;
+    --c-surface:     255 254 251;
+    --c-elev:        244 240 232;
+    --c-border:      224 218 206;
+    --c-rule:        212 204 188;
+    --c-ink:           20  20  24;
+    --c-ink-muted:     76  74  82;
+    --c-ink-faint:    136 130 130;
+    --c-primary:      139  74  54;
+    --c-primary-soft: 237 216 207;
+  }
+
+  html, body {
+    font-family: 'Karla', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Karla', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  code, pre, kbd, samp, .mono {
+    font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    font-feature-settings: 'ss01';
+  }
+
+  input, select, textarea, button {
+    font-family: inherit;
+  }
+}
+
+@layer components {
+  /* ===== Shortcode placeholder dentro do editor Quill (ClickBank) ===== */
+  .ql-editor .shortcode-placeholder {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgb(254 243 199);
+    border: 1px dashed rgb(217 119 6);
+    border-radius: 4px;
+    color: rgb(146 64 14);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    margin: 0 2px;
+  }
+
+  /* ===== Preview mode — respeitar largura, quebrar palavras longas ===== */
+  .admin-preview {
+    font-family: 'Switzer', system-ui, sans-serif;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+  }
+  .admin-preview img {
+    max-width: 100%;
+    height: auto;
+  }
+  .admin-preview table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  .admin-preview pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Reset pra shortcodes (impede prose herdar underline/cores) */
+  .admin-preview .product-shortcode-card,
+  .admin-preview .product-shortcode-card *,
+  .admin-preview .product-shortcode-comparator *,
+  .admin-preview [data-shortcode] * {
+    text-decoration: none !important;
+  }
+  .admin-preview .product-shortcode-card {
+    color: inherit;
+  }
+  .admin-preview .product-shortcode-card:hover {
+    border-color: #a3592d !important;
+  }
+
+  /* ===== Card de produto renderizado no preview (replica do front público) ===== */
+  .admin-preview .preview-product-card {
+    display: block;
+    background: white;
+    border: 1px solid rgb(226 232 240);
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    text-decoration: none;
+  }
+  .admin-preview .preview-product-card .pc-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: rgb(100 116 139);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .admin-preview .preview-product-card .pc-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: rgb(15 23 42);
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+  .admin-preview .preview-product-card .pc-blurb {
+    color: rgb(71 85 105);
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+  .admin-preview .preview-product-card .pc-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgb(241 245 249);
+    padding-top: 1rem;
+    gap: 1rem;
+  }
+  .admin-preview .preview-product-card .pc-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: rgb(163 89 45);
+  }
+  .admin-preview .preview-product-card .pc-cta {
+    background: rgb(163 89 45);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  .admin-preview .preview-product-card .pc-rating {
+    font-family: 'JetBrains Mono', monospace;
+    color: rgb(163 89 45);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* Tabela comparativa no preview */
+  .admin-preview .preview-comparator {
+    margin: 1.5rem 0;
+    border: 1px solid rgb(226 232 240);
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+  }
+  .admin-preview .preview-comparator table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .admin-preview .preview-comparator th,
+  .admin-preview .preview-comparator td {
+    padding: 0.875rem;
+    text-align: left;
+    border-bottom: 1px solid rgb(241 245 249);
+    vertical-align: top;
+  }
+  .admin-preview .preview-comparator th {
+    background: rgb(248 250 252);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: rgb(100 116 139);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .admin-preview .preview-comparator .pc-name-cell {
+    font-weight: 700;
+    color: rgb(15 23 42);
+  }
+  .admin-preview .preview-comparator .pc-price-cell {
+    font-weight: 800;
+    color: rgb(163 89 45);
+  }
+}
+
+/* ============================================================
+   Cantos macios do scaffold — escopado ao admin via .admin-shell.
+   Fora de @layer pra vencer a utility do Tailwind sem !important.
+   admin.css só carrega no admin/login → público (3/4/6px) intocado.
+   ============================================================ */
+.admin-shell .rounded    { border-radius: 8px; }
+.admin-shell .rounded-md { border-radius: 12px; }
+.admin-shell .rounded-lg { border-radius: 16px; }

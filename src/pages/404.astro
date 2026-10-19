@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="404 — this page does not exist">
+  <div class="container-x py-24 md:py-40">
+    <div class="max-w-2xl">
+      <p class="mono uppercase text-ink-faint mb-5">erro 404</p>
+      <h1 class="font-display text-6xl md:text-7xl font-extrabold tracking-tight text-ink leading-[0.98] mb-6">
+        Page not found.
+      </h1>
+      <p class="text-lg text-ink-muted mb-10 max-w-prose-lg leading-relaxed">
+        This URL does not match anything we have here. It may have moved or never existed.
+      </p>
+      <div class="flex gap-3 flex-wrap">
+        <a href="/" class="btn btn-primary no-underline">voltar pra home</a>
+        <a href="/blog" class="btn btn-ghost no-underline">todos os artigos</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
